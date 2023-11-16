@@ -2,10 +2,21 @@
  /*
 #include<iostream>
 int main(){
-    int a[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
-    int m[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
+    int a[4][4];
+    int m[4][4];
     int l[4][4];
-   
+     std::cout<<"enter a number1:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>a[u][o];
+        }
+    }
+      std::cout<<"enter a number2:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>m[u][o];
+        }
+    }
    
       for(int o=0;o<4;o++){
         for(int p=0;p<4;p++){
@@ -29,10 +40,21 @@ for(int u=0;u<4;u++){
 /*
 #include<iostream>
 int main(){
-    int a[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
-    int m[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
+    int a[4][4];
+    int m[4][4];
     int l[4][4];
-   
+     std::cout<<"enter a number1:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>a[u][o];
+        }
+    }
+      std::cout<<"enter a number2:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>m[u][o];
+        }
+    }
    
       for(int o=0;o<4;o++){
         for(int p=0;p<4;p++){
@@ -56,10 +78,21 @@ for(int u=0;u<4;u++){
 
 #include<iostream>
 int main(){
-    int a[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
-    int m[4][4]={{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
+    int a[4][4];
+    int m[4][4];
     int l[4][4];
-   
+     std::cout<<"enter a number1:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>a[u][o];
+        }
+    }
+      std::cout<<"enter a number2:"<<std::endl;
+    for(int u=0;u<4;u++){
+        for(int o=0;o<4;o++){
+            std::cin>>m[u][o];
+        }
+    }
    
       for(int o=0;o<4;o++){
         for(int p=0;p<4;p++){
