@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="adamak.cpp" />
+    <ClCompile Include="d3dUtility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="d3dUtility.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -141,12 +148,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\d3dUtility.cpp" />
-    <ClCompile Include="..\d3dxcreate.cpp" />
-    <ClCompile Include="d3dUtility.cpp" />
-    <ClCompile Include="Human.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

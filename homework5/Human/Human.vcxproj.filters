@@ -18,14 +18,13 @@
     <ClCompile Include="d3dUtility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Human.cpp">
+    <ClCompile Include="adamak.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\d3dUtility.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="d3dUtility.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\d3dxcreate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,5 @@
+﻿  cube.cpp
+  d3dUtility.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\kj\Human\d3dUtility.cpp(147,15): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating Code...
+  Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\kj\x64\Debug\Human.exe
