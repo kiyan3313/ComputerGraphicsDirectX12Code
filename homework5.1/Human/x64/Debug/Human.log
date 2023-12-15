@@ -1,0 +1,6 @@
+﻿  adamak.cpp
+  d3dUtility.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework5.1\Human\d3dUtility.cpp(152,15): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework5.1\x64\Debug\Human.exe not found or not built by the last incremental link; performing full link
+  Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework5.1\x64\Debug\Human.exe
