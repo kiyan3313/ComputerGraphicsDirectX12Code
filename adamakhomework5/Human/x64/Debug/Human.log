@@ -1,0 +1,12 @@
+﻿  adamak.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(191,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(192,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(193,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(195,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(196,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\adamak.cpp(197,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  d3dUtility.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\Human\d3dUtility.cpp(152,15): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\x64\Debug\Human.exe not found or not built by the last incremental link; performing full link
+  Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\adamakhomework5\x64\Debug\Human.exe
