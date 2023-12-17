@@ -1,0 +1,8 @@
+﻿  adamak.cpp
+G:\kjkjkj\Human\adamak.cpp(171,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+G:\kjkjkj\Human\adamak.cpp(172,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+G:\kjkjkj\Human\adamak.cpp(173,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+G:\kjkjkj\Human\adamak.cpp(175,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+G:\kjkjkj\Human\adamak.cpp(176,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+G:\kjkjkj\Human\adamak.cpp(177,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Human.vcxproj -> G:\kjkjkj\x64\Debug\Human.exe
