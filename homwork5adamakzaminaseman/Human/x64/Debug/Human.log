@@ -1,0 +1,5 @@
+﻿  adamak.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(70,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(71,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(72,34): warning C4244: 'argument': conversion from 'double' to 'UINT', possible loss of data
+  Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\x64\Debug\Human.exe
