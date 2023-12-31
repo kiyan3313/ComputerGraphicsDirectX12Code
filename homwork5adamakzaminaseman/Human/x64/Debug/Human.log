@@ -1,5 +1,14 @@
 ﻿  adamak.cpp
-C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(70,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(71,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
-C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(72,34): warning C4244: 'argument': conversion from 'double' to 'UINT', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(68,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(69,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(70,34): warning C4244: 'argument': conversion from 'double' to 'UINT', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(156,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(157,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(158,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(160,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(161,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(162,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(271,7): warning C4101: 'object_index': unreferenced local variable
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(317,27): warning C4305: '=': truncation from 'int' to 'BYTE'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\Human\adamak.cpp(317,23): warning C4309: '=': truncation of constant value
   Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homwork5adamakzaminaseman\x64\Debug\Human.exe

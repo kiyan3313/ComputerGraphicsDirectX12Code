@@ -1,5 +1,4 @@
-﻿
-#include "d3dUtility.h"
+﻿#include "d3dUtility.h"
 
 IDirect3DDevice9* Device = 0; 
 
@@ -15,17 +14,16 @@ D3DXMATRIX Worlds[14];
 static float plane_x = 20.0f;
 static float plane_y = -7.4f;
 static float plane_z = 20.0f;
-
-//static float speed = 0.01f;
-
-IDirect3DTexture9* image_wall_tex = 0;
-IDirect3DTexture9* wall_tex = 0;
-
 // light's settings 
 static bool lightEnable = true;
 
 // vertex buffer
 IDirect3DVertexBuffer9* x = 0;
+
+
+// font settings
+ID3DXMesh* font_mesh = 0;
+D3DXMATRIX result;
 
 // Vertex structure for planes
 struct Vertex {
@@ -95,8 +93,8 @@ void CreateObjects() {
 	Materials[4] = d3d::YELLOW_MTRL;
 	Materials[5] = d3d::RED_MTRL;
 	Materials[6] = d3d::RED_MTRL;
-	Materials[7] = d3d::GREEN_MTRL;
-	Materials[8] = d3d::GREEN_MTRL;
+	Materials[7] = d3d::RED_MTRL;
+	Materials[8] = d3d::RED_MTRL;
 	Materials[9] = d3d::BLUE_MTRL;
 	Materials[10] = d3d::BLUE_MTRL;
 	Materials[11] = d3d::BLUE_MTRL;
@@ -153,7 +151,15 @@ void CreateHome() {
 	v[27] = Vertex(-plane_x, -plane_y + 7, -plane_z, 0.5f, 0.0f, 0.5f, 0.0f, 0.5f);
 	v[28] = Vertex(plane_x, -plane_y + 7, plane_z, 0.5f, 0.0f, 0.5f, 0.5f, 0.0f);
 	v[29] = Vertex(plane_x, -plane_y + 7, -plane_z, 0.5f, 0.0f, -0.5f, 0.5f, 0.5f);
-	
+	//miror
+
+	v[30] = Vertex(-3.0f, plane_y, plane_z - 0.01, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f),
+		v[31] = Vertex(-3.0f, 1, plane_z - 0.01, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f),
+		v[32] = Vertex(3.0f, 1, plane_z - 0.01, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f),
+
+		v[33] = Vertex(-3.0f, plane_y, plane_z - 0.00, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f),
+		v[34] = Vertex(3.0f, 1, plane_z - 0.01, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f),
+		v[35] = Vertex(3.0f, plane_y, plane_z - 0.01, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f),
 		x->Unlock();
 }
 
@@ -195,7 +201,9 @@ void Light() {
 		d3d::Release<ID3DXMesh*>(Objects[i]);
 }
 
-
+	//mirror
+		D3DMATERIAL9 mirror_material = d3d::WHITE_MTRL;
+	IDirect3DTexture9* mirror_texture = 0;
 	// function to render the science of the floor and wall
 	void RenderScene() {
 		D3DXMATRIX I;
@@ -209,25 +217,230 @@ void Light() {
 
 		// draw the floor
 		Device->SetMaterial(&d3d::YELLOW_MTRL);
-		Device->SetTexture(0, 0);
 		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 0, 2);
 
 		// draw the wall
 		Device->SetMaterial(&d3d::RED_MTRL);
-		Device->SetTexture(0, wall_tex);
 		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 6, 2);
 		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 18, 2);
 
 		// draw the wall
 		Device->SetMaterial(&d3d::RED_MTRL);
-		Device->SetTexture(0, image_wall_tex);
 		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 12, 2);
 
 		// draw the roof
 		Device->SetMaterial(&d3d::RED_MTRL);
-		Device->SetTexture(0, wall_tex);
 		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 24, 2);
 		
+		//miror
+		Device->SetMaterial(&mirror_material);
+		Device->SetTexture(0, mirror_texture);
+		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 30, 2);
+	}
+
+	// function to render the shadow
+	void RenderShadow() {
+		Device->SetRenderState(D3DRS_STENCILENABLE, true);
+		Device->SetRenderState(D3DRS_STENCILFUNC, D3DCMP_EQUAL);
+		Device->SetRenderState(D3DRS_STENCILREF, 0x0);
+		Device->SetRenderState(D3DRS_STENCILMASK, 0xffffffff);
+		Device->SetRenderState(D3DRS_STENCILWRITEMASK, 0xffffffff);
+		Device->SetRenderState(D3DRS_STENCILZFAIL, D3DSTENCILOP_KEEP);
+		Device->SetRenderState(D3DRS_STENCILFAIL, D3DSTENCILOP_KEEP);
+		Device->SetRenderState(D3DRS_STENCILPASS, D3DSTENCILOP_INCR); // increment to 1
+
+		// position shadow
+		D3DXVECTOR4 lightDirection(1.9f, 1.9f, 0.0f, 1.9f);
+		D3DXPLANE groundPlane(0.0f, 1.0f, 0.0f, 0.0f);
+
+		D3DXMATRIX W, S;
+		D3DXMATRIX tra = {
+				1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, 1.0f, 0.0f,
+				plane_y, plane_y, plane_y, 1.0f
+		};
+
+		D3DXMatrixShadow(
+			&S,
+			&lightDirection,
+			&groundPlane);
+
+		S *= tra;
+
+		int object_index;
+
+		// alpha blend the shadow
+		Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
+		Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+		Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+		D3DMATERIAL9 mtrl = d3d::InitMtrl(d3d::BLACK, d3d::BLACK, d3d::BLACK, d3d::BLACK, 0.0f);
+		mtrl.Diffuse.a = 0.5f; // 50% transparency.
+		
+		// Disable depth buffer so that z-fighting doesn't occur when we render the shadow on top of the floor.
+		Device->SetRenderState(D3DRS_ZENABLE, false);
+
+		for (int i = 0; i < 14; i++) {
+			W = Worlds[i] * S;
+			Device->SetTransform(D3DTS_WORLD, &W);
+			Device->SetMaterial(&mtrl);
+			Objects[i]->DrawSubset(0);
+		}
+
+		Device->SetRenderState(D3DRS_ZENABLE, true);
+		Device->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
+		Device->SetRenderState(D3DRS_STENCILENABLE, false);
+	}
+
+
+	// function to create the name and font
+	void createName() {
+		// Get a handle to a device context.0
+		HDC hdc = CreateCompatibleDC(0);
+		HFONT hFont;
+		HFONT hFontOld;
+
+		// Describe the font we want.
+		LOGFONT lf;
+		ZeroMemory(&lf, sizeof(LOGFONT));
+
+		lf.lfHeight = 7;    // in logical units
+		lf.lfWidth = 7;    // in logical units
+		lf.lfEscapement = 0;
+		lf.lfOrientation = 600000;
+		lf.lfWeight = 900000;   // boldness, range 0(light) - 1000(bold)
+		lf.lfItalic = false;
+		lf.lfUnderline = false;
+		lf.lfStrikeOut = true;
+		lf.lfCharSet = DEFAULT_CHARSET;
+		lf.lfOutPrecision = 1000;
+		lf.lfClipPrecision = 0;
+		lf.lfQuality = 0;
+		lf.lfPitchAndFamily = 0;
+
+		//string strFaceName = "Times New Roman";
+		//copy(strFaceName.begin(), strFaceName.end(), lf.lfFaceName);
+
+		// Create the font and select it with the device context.
+		hFont = CreateFontIndirect(&lf);
+		hFontOld = (HFONT)SelectObject(hdc, hFont);
+
+		// Create the text mesh based on the selected font in the HDC.
+		D3DXCreateTextA(Device, hdc, "Kiyan Amiri", 0.001f, 0.4f, &font_mesh, 0, 0);
+
+		// Restore the old font and free the acquired HDC.
+		SelectObject(hdc, hFontOld);
+		DeleteObject(hFont);
+		DeleteDC(hdc);
+
+		D3DXMatrixTranslation(&result, -2.3f, 3.0f, plane_z+5);
+	}
+
+	void RenderMirror() {
+		Device->SetRenderState(D3DRS_STENCILENABLE, true);
+		Device->SetRenderState(D3DRS_STENCILFUNC, D3DCMP_ALWAYS);
+		Device->SetRenderState(D3DRS_STENCILREF, 0x1);
+		Device->SetRenderState(D3DRS_STENCILMASK, 0xffffffff);
+		Device->SetRenderState(D3DRS_STENCILWRITEMASK, 0xffffffff);
+		Device->SetRenderState(D3DRS_STENCILZFAIL, D3DSTENCILOP_KEEP);
+		Device->SetRenderState(D3DRS_STENCILFAIL, D3DSTENCILOP_KEEP);
+		Device->SetRenderState(D3DRS_STENCILPASS, D3DSTENCILOP_REPLACE);
+
+		// disable writes to the depth and back buffers
+		Device->SetRenderState(D3DRS_ZWRITEENABLE, false);
+		Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
+		Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+		Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+
+		// draw the mirror to the stencil buffer
+		Device->SetStreamSource(0, x, 0, sizeof(Vertex));
+		Device->SetFVF(Vertex::FVF);
+		Device->SetMaterial(&mirror_material);
+		Device->SetTexture(0, mirror_texture);
+
+		D3DXMATRIX I;
+		D3DXMatrixIdentity(&I);
+		Device->SetTransform(D3DTS_WORLD, &I);
+		Device->DrawPrimitive(D3DPT_TRIANGLELIST, 30, 2);
+
+		// re-enable depth writes
+		Device->SetRenderState(D3DRS_ZWRITEENABLE, true);
+
+		// only draw reflected to the pixels where the mirror was drawn to.
+		Device->SetRenderState(D3DRS_STENCILFUNC, D3DCMP_EQUAL);
+		Device->SetRenderState(D3DRS_STENCILPASS, D3DSTENCILOP_KEEP);
+
+		// position reflection
+		D3DXMATRIX W;
+		D3DXMATRIX refl = {
+				1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, -1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+		};
+
+		D3DXMATRIX tra = {
+				1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, 1.0f, 0.0f,
+				0.0f, 0.0f, plane_z , 1.0f
+		};
+
+		refl *= tra;
+
+		Device->Clear(0, 0, D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
+		Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_DESTCOLOR);
+		Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ZERO);
+
+
+		// find the exact reflection in mirror
+		W = Worlds[0] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[0]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[0]->DrawSubset(0);
+
+		W = Worlds[1] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[1]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[1]->DrawSubset(0);
+
+		W = Worlds[7] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[7]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[7]->DrawSubset(0);
+
+		W = Worlds[8] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[8]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[8]->DrawSubset(0);
+
+		W = Worlds[4] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[4]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[4]->DrawSubset(0);
+
+		W = Worlds[2] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[2]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[2]->DrawSubset(0);
+
+		W = Worlds[3] * refl;
+		Device->SetTransform(D3DTS_WORLD, &W);
+		Device->SetMaterial(&Materials[3]);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);
+		Objects[3]->DrawSubset(0);
+
+		// Restore render states.
+		Device->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
+		Device->SetRenderState(D3DRS_STENCILENABLE, false);
+		Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 	}
 	
 bool Display(float timeDelta)
@@ -301,7 +514,17 @@ bool Display(float timeDelta)
 			Device->SetTransform(D3DTS_WORLD, &Worlds[i]);
 			Objects[i]->DrawSubset(0);
 		}
-		//RenderMirror();
+		
+		//RenderShadow();
+
+		RenderMirror();
+
+
+		// draw font and name, set material and world matrix
+		Device->SetTransform(D3DTS_WORLD, &result);
+		Device->SetMaterial(&d3d::BLUE_MTRL);
+		font_mesh->DrawSubset(0);
+
 		
 		Device->EndScene();
 		Device->Present(0, 0, 0, 0);
@@ -313,6 +536,7 @@ bool Setup() {
 
 	CreateObjects();
 	CreateHome();
+	createName();
 	Light();
 	return true;
 }
