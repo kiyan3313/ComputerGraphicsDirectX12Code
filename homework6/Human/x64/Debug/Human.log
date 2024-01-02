@@ -1,0 +1,24 @@
+﻿  adamak.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(142,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(143,59): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(144,34): warning C4244: 'argument': conversion from 'double' to 'UINT', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(230,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(231,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(232,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(234,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(235,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(236,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(278,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(281,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(284,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(287,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(305,72): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(308,7): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(316,71): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(319,7): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\adamak.cpp(418,7): warning C4101: 'object_index': unreferenced local variable
+  d3dUtility.cpp
+C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\Human\d3dUtility.cpp(147,15): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\x64\Debug\Human.exe not found or not built by the last incremental link; performing full link
+  Human.vcxproj -> C:\Users\Padra-System\ComputerGraphicsDirectX12Code\homework6\x64\Debug\Human.exe
